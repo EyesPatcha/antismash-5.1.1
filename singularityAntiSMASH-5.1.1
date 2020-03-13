@@ -13,3 +13,32 @@ make
 sudo make install
 
 singularity build antismash.simg docker://antismash/standalone:5.1.1
+
+
+###create image from Docker file
+sudo docker build -t antismash-5.1.1 .
+
+#error
+/usr/local/lib/python3.5/dist-packages/sklearn/externals/joblib/__init__.py:15: FutureWarning: sklearn.externals.joblib is deprecated in 0.21 and will be removed in 0.23. Please import this functionality directly from joblib, which can be installed with: pip install joblib. If this warning is raised when loading pickled models, you may need to re-serialize those models with scikit-learn 0.21+.
+  warnings.warn(msg, category=FutureWarning)
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.5/dist-packages/antismash/__init__.py", line 12, in <module>
+    from antismash.main import run_antismash, get_detection_modules, \
+  File "/usr/local/lib/python3.5/dist-packages/antismash/main.py", line 44, in <module>
+    from antismash.modules import (active_site_finder,
+  File "/usr/local/lib/python3.5/dist-packages/antismash/modules/lanthipeptides/__init__.py", line 13, in <module>
+    from antismash.common.external.rodeo_svm.rebuild import pickle_classifier
+  File "/usr/local/lib/python3.5/dist-packages/antismash/common/external/rodeo_svm/rebuild.py", line 9, in <module>
+    from .svm_classify import save_classifier
+  File "/usr/local/lib/python3.5/dist-packages/antismash/common/external/rodeo_svm/svm_classify.py", line 76, in <module>
+    sklearn_int_versions = list(map(int, sklearn.__version__.split('.')))
+ValueError: invalid literal for int() with base 10: 'post1'
+
+#install joblib
+pip install joblib
+
+#install scikit-learn
+pip install scikit-learn
+
+NOT WORK
